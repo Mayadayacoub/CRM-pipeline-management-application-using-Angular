@@ -86,6 +86,7 @@
               let i = index
             "
             cdkDrag
+
           >
             <div class="card" >
               <div class="card-body">
@@ -148,6 +149,7 @@
             "
             cdkDrag
             (cdkDragDropped)="CdkDragDrop($event)"
+            (ondrop)="updateStatusFocus(item)"
           >
             <div class="card" >
               <div class="card-body">
