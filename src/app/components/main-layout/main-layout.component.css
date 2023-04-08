@@ -23,6 +23,7 @@ background-color: rgb(220, 220, 220);
   border-radius: 4px;
   overflow: hidden;
   display: block;
+  background-color: #cccccc4b;
 }
 
 .example-box {
@@ -37,6 +38,7 @@ background-color: rgb(220, 220, 220);
   cursor: move;
   background: white;
   font-size: 14px;
+
 }
 
 .cdk-drag-preview {
@@ -68,3 +70,6 @@ background-color: rgb(220, 220, 220);
 }
 
 
+.background{
+  background-color: #ccc;
+}
