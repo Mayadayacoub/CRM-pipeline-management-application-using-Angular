@@ -73,3 +73,14 @@ background-color: rgb(220, 220, 220);
 .background{
   background-color: #ccc;
 }
+@media  (max-width: 600px) {
+  /* For mobile phones: */
+  .x{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
