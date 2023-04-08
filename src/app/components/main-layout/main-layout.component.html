@@ -1,0 +1,369 @@
+<div class="shipping-options">
+  <div class="container">
+    <p class="py-2">
+      <a
+        class="btn"
+        data-bs-toggle="collapse"
+        href="#multiCollapseExample1"
+        role="button"
+        aria-expanded="false"
+        aria-controls="multiCollapseExample1"
+        >Deals</a
+      >
+      <a
+        class="btn mx-2"
+        data-bs-toggle="collapse"
+        href="#multiCollapseExample2"
+        role="button"
+        aria-expanded="false"
+        aria-controls="multiCollapseExample"
+        >Activities</a
+      >
+      <a
+        class="btn mx-2"
+        data-bs-toggle="collapse"
+        href="#multiCollapseExample3"
+        role="button"
+        aria-expanded="false"
+        aria-controls="multiCollapseExample"
+        >Statistics</a
+      >
+    </p>
+  </div>
+</div>
+
+<div class="container my-4">
+  <div class="d-flex flex-row">
+    <div class="input-group">
+      <input
+        class="form-control border-2 border mx-2 p-2"
+        type="search"
+        [(ngModel)]="fields.first_name"
+        (ngModelChange)="updateFilters()"
+        placeholder="Search First Name"
+      />
+    </div>
+    <div class="input-group">
+      <input
+        class="form-control border-2 border mx-2 p-2"
+        type="search"
+        [(ngModel)]="fields.last_name"
+        (ngModelChange)="updateFilters()"
+        placeholder="Search Last Name"
+      />
+    </div>
+    <div class="input-group">
+      <input
+        class="form-control border-2 border mx-2 p-2"
+        type="search"
+        [(ngModel)]="fields.email"
+        (ngModelChange)="updateFilters()"
+        placeholder="Search  Email"
+      />
+    </div>
+  </div>
+</div>
+<div class="container" cdkDropListGroup>
+  <div class="row">
+    <div>
+      <div class="col example-container" >
+        <h2>GETTING READY</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="gettingReady"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="
+              let item of gettingReady | filterSearch : filter;
+              let i = index
+            "
+            cdkDrag
+          >
+            <div class="card" >
+              <div class="card-body">
+                <h4 class="card-title fw-bold">
+                  {{ item.first_name }} {{ item.last_name }}
+                </h4>
+                <h1>{{ item.status }}</h1>
+                <p class="card-text text-secondary">
+                  <i class="bi bi-telephone mx-1"></i>{{ item.company }}
+                  {{ item.phone }}
+                </p>
+                <span class="badge text-bg-secondary mx-2 p-2">{{
+                  item.state
+                }}</span>
+
+                <span
+                  mat-raised-button
+                  class="badge text-bg-primary mx-2 p-2"
+                  matTooltip="Probability Status {{ item.probability_status }}"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
+                  {{ item.probability_status }}
+                </span>
+                <p class="text-secondary p-2 fw-bold">
+                  <i class="bi bi-calendar"></i
+                  ><input
+                    disabled
+                    type="date"
+                    value="{{ item.date }}"
+                    class="border-0 mx-2"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isLoadingData">
+            <div class="d-flex justify-content-center mt-3">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mx-3">Loading ....</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col example-container">
+        <h2>FOCUS</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="focus"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="
+              let item of focus | filterSearch : filter;
+              let i = index
+            "
+            cdkDrag
+            (cdkDragDropped)="CdkDragDrop($event)"
+          >
+            <div class="card" >
+              <div class="card-body">
+                <h4 class="card-title fw-bold">
+                  {{ item.first_name }} {{ item.last_name }}
+                </h4>
+                <h1>{{ item.status }}</h1>
+                <p class="card-text text-secondary">
+                  <i class="bi bi-telephone mx-1"></i>{{ item.company }}
+                  {{ item.phone }}
+                </p>
+                <span class="badge text-bg-secondary mx-2 p-2">{{
+                  item.state
+                }}</span>
+                <span
+                  mat-raised-button
+                  class="badge text-bg-primary mx-2 p-2"
+                  matTooltip="Probability Status {{ item.probability_status }}"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
+                  {{ item.probability_status }}
+                </span>
+                <p class="text-secondary p-2 fw-bold">
+                  <i class="bi bi-calendar"></i
+                  ><input
+                    disabled
+                    type="date"
+                    value="{{ item.date }}"
+                    class="border-0 mx-2"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isLoadingData">
+            <div class="d-flex justify-content-center mt-3">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mx-3">Loading ....</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col example-container">
+        <h2>POTENTIAL VALUE</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="potential"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="
+              let item of potential | filterSearch : filter;
+              let i = index
+            "
+            cdkDrag
+          >
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title fw-bold">
+                  {{ item.first_name }} {{ item.last_name }}
+                </h4>
+                <h1>{{ item.status }}</h1>
+                <p class="card-text text-secondary">
+                  <i class="bi bi-telephone mx-1"></i>{{ item.company }}
+                  {{ item.phone }}
+                </p>
+                <span class="badge text-bg-secondary mx-2 p-2">{{
+                  item.state
+                }}</span>
+                <span
+                  mat-raised-button
+                  class="badge text-bg-primary mx-2 p-2"
+                  matTooltip="Probability Status {{ item.probability_status }}"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
+                  {{ item.probability_status }}
+                </span>
+                <p class="text-secondary p-2 fw-bold">
+                  <i class="bi bi-calendar"></i
+                  ><input
+                    disabled
+                    type="date"
+                    value="{{ item.date }}"
+                    class="border-0 mx-2"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isLoadingData">
+            <div class="d-flex justify-content-center mt-3">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mx-3">Loading ....</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col example-container">
+        <h2>OFFER SENT</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="offerSent"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box"
+            *ngFor="
+              let item of offerSent | filterSearch : filter;
+              let i = index
+            "
+            cdkDrag
+          >
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title fw-bold">
+                  {{ item.first_name }} {{ item.last_name }}
+                </h4>
+                <h1>{{ item.status }}</h1>
+                <p class="card-text text-secondary">
+                  <i class="bi bi-telephone mx-1"></i>{{ item.company }}
+                  {{ item.phone }}
+                </p>
+                <span class="badge text-bg-secondary mx-2 p-2">{{
+                  item.state
+                }}</span>
+                <span
+                  mat-raised-button
+                  class="badge text-bg-primary mx-2 p-2"
+                  matTooltip="Probability Status {{ item.probability_status }}"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
+                  {{ item.probability_status }}
+                </span>
+                <p class="text-secondary p-2 fw-bold">
+                  <i class="bi bi-calendar"></i
+                  ><input
+                    disabled
+                    type="date"
+                    value="{{ item.date }}"
+                    class="border-0 mx-2"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isLoadingData">
+            <div class="d-flex justify-content-center mt-3">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mx-3">Loading ....</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col example-container">
+        <h2>CONTACT MADE</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="contactMade"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div
+            class="example-box "
+            *ngFor="
+              let item of contactMade | filterSearch : filter;
+              let i = index
+            "
+            cdkDrag
+          >
+            <div class="card" >
+              <div class="card-body">
+                <h4 class="card-title fw-bold">
+                  {{ item.first_name }} {{ item.last_name }}
+                </h4>
+                <h1>{{ item.status }}</h1>
+                <p class="card-text text-secondary">
+                  <i class="bi bi-telephone mx-1"></i>{{ item.company }}
+                  {{ item.phone }}
+                </p>
+                <span class="badge text-bg-secondary mx-2 p-2">{{
+                  item.state
+                }}</span>
+                <span
+                  mat-raised-button
+                  class="badge text-bg-primary mx-2 p-2"
+                  matTooltip="Probability Status {{ item.probability_status }}"
+                  aria-label="Button that displays a tooltip when focused or hovered over"
+                >
+                  {{ item.probability_status }}
+                </span>
+                <p class="text-secondary p-2 fw-bold">
+                  <i class="bi bi-calendar"></i
+                  ><input
+                    disabled
+                    type="date"
+                    value="{{ item.date }}"
+                    class="border-0 mx-2"
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isLoadingData">
+            <div class="d-flex justify-content-center mt-3">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="mx-3">Loading ....</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
