@@ -16,6 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { FilterSearchPipe } from './Models/filter-search.pipe';
 import { LoadingComponent } from './components/loading/loading.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ActivitiesComponent } from './components/activities/activities.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     SearchPipe,
     FilterSearchPipe,
     LoadingComponent,
+    ActivitiesComponent,
 
 
   ],

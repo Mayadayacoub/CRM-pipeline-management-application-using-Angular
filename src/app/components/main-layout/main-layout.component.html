@@ -4,16 +4,19 @@
       <a
         class="btn"
         data-bs-toggle="collapse"
-        href="#multiCollapseExample1"
+        href="#deals"
         role="button"
         aria-expanded="false"
         aria-controls="multiCollapseExample1"
+
+
         >Deals</a
       >
       <a
         class="btn mx-2"
         data-bs-toggle="collapse"
-        href="#multiCollapseExample2"
+        href="#activities"
+        routerLink="/activities"
         role="button"
         aria-expanded="false"
         aria-controls="multiCollapseExample"
@@ -30,6 +33,44 @@
       >
     </p>
   </div>
+  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-secondary">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a
+            class="nav-link"
+            aria-current="page"
+            routerLink="/Home"
+            routerLinkActive="active"
+            >Deals</a
+          >
+          <a class="nav-link" routerLink="/activities" routerLinkActive="active"
+            >Activities</a
+          >
+          <a class="nav-link" routerLink="/OrderList" routerLinkActive="active"
+            >OrderList</a
+          >
+
+
+          <a class="nav-link" routerLink="/Register" routerLinkActive="active"
+            >Register</a
+          >
+        </div>
+      </div>
+    </div>
+  </nav> -->
+
 </div>
 
 <div class="container my-4">
@@ -63,7 +104,7 @@
     </div>
   </div>
 </div>
-<div class="container " cdkDropListGroup>
+<div class="container " id="deals" cdkDropListGroup >
   <div class="row">
     <div>
       <div class="col example-container " >
@@ -367,3 +408,4 @@
     </div>
   </div>
 </div>
+
